@@ -1,26 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0c0606;
+  --foreground: #f8fafc;
+  --card: #140c0c;
+  --card-border: #2a1515;
+  --china-red: #DE2910;
+  --china-gold: #FFDE00;
+  --muted: #374151;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-teal: var(--teal);
+  --color-red: var(--red);
+  --color-muted: var(--muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #111827; }
+::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
+
+/* Glow utilities */
+.glow-red { box-shadow: 0 0 40px rgba(222,41,16,0.2), 0 0 80px rgba(222,41,16,0.08); }
+.glow-red-sm { box-shadow: 0 0 20px rgba(222,41,16,0.3); }
+.glow-teal { box-shadow: 0 0 40px rgba(0,212,255,0.15), 0 0 80px rgba(0,212,255,0.05); }
+.glow-teal-sm { box-shadow: 0 0 20px rgba(0,212,255,0.25); }
+
+/* Gradient border */
+.gradient-border {
+  border: 1px solid transparent;
+  background: linear-gradient(#140c0c, #140c0c) padding-box,
+              linear-gradient(135deg, #DE2910, transparent 60%, #FFDE00) border-box;
+}
+
+/* Typing cursor */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.cursor-blink { animation: blink 1s step-end infinite; }
+
+/* Shimmer */
+@keyframes shimmer { from{background-position:200% 0} to{background-position:-200% 0} }
+.shimmer {
+  background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
